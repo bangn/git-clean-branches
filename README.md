@@ -1,6 +1,6 @@
 # git-clean-branches
 
-Delete local branches which do not have upstream branches.
+Clean up local branches deleted on a remote
 
 ## Usage
 
