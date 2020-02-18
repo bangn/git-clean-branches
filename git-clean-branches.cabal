@@ -1,0 +1,129 @@
+cabal-version:       2.0
+name:                git-clean-branches
+version:             0.0.0.0
+synopsis:            Clean up local branches
+description:         Clean up local branches
+homepage:            https://github.com/bangn/git-clean-branches
+bug-reports:         https://github.com/bangn/git-clean-branches/issues
+license:             AllRightsReserved
+author:              bangn
+maintainer:          thebangnguyen@gmail.com
+copyright:           2020 bangn
+category:            Utility
+build-type:          Simple
+extra-doc-files:     README.md
+                   , CHANGELOG.md
+tested-with:         GHC == 8.8.1
+
+source-repository head
+  type:                git
+  location:            https://github.com/bangn/git-clean-branches.git
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     GitCleanBranches
+                       
+
+  build-depends:       base ^>= 4.13.0.0
+                     
+
+  ghc-options:         -Wall
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+                       -Wmissing-export-lists
+                       -Wpartial-fields
+                       -Wmissing-deriving-strategies
+
+  default-language:    Haskell2010
+  default-extensions:  ConstraintKinds
+                       DeriveGeneric
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns
+
+executable git-clean-branches
+  hs-source-dirs:      app
+  main-is:             Main.hs
+
+  build-depends:       base ^>= 4.13.0.0
+                     , git-clean-branches
+                     
+
+  ghc-options:         -Wall
+                       -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+                       -Wmissing-export-lists
+                       -Wpartial-fields
+                       -Wmissing-deriving-strategies
+
+  default-language:    Haskell2010
+  default-extensions:  ConstraintKinds
+                       DeriveGeneric
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns
+
+test-suite git-clean-branches-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+
+  build-depends:       base ^>= 4.13.0.0
+                     , git-clean-branches
+                     
+
+  ghc-options:         -Wall
+                       -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+                       -Wmissing-export-lists
+                       -Wpartial-fields
+                       -Wmissing-deriving-strategies
+
+  default-language:    Haskell2010
+  default-extensions:  ConstraintKinds
+                       DeriveGeneric
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns
