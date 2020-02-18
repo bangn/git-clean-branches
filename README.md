@@ -1,6 +1,17 @@
 # git-clean-branches
 
-[![Build status](https://img.shields.io/travis/bangn/git-clean-branches.svg?logo=travis)](https://travis-ci.org/bangn/git-clean-branches)
-[![Hackage](https://img.shields.io/hackage/v/git-clean-branches.svg?logo=haskell)](https://hackage.haskell.org/package/git-clean-branches)
+Delete local branches which do not have upstream branches.
 
-Clean up local branches
+## Usage
+
+### Clean up
+
+```bash
+git clean-branches
+```
+
+### Fetch upstream branches before clean up
+
+```bash
+git clean-branches --fetch-upstream
+```
