@@ -1,6 +1,8 @@
 module GitCleanBranches
-       ( someFunc
+       ( run
        ) where
 
-someFunc :: IO ()
-someFunc = putStrLn ("someFunc" :: String)
+import GitCleanBranches.Cli (runCleanBranches)
+run :: IO ()
+run = runCleanBranches
+  -- readProcess "git" ["for-each-ref", "--format", "%(refname:short)%(upstream:track)"] [] >>= print
