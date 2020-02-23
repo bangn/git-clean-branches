@@ -1,6 +1,9 @@
 module GitCleanBranches
-       ( someFunc
+       ( run
        ) where
 
-someFunc :: IO ()
-someFunc = putStrLn ("someFunc" :: String)
+import GitCleanBranches.Cli (runCleanBranches)
+run :: IO ()
+run = do
+  putStrLn "Start cleaning..."
+  runCleanBranches

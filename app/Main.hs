@@ -1,7 +1,6 @@
 module Main (main) where
 
-import GitCleanBranches (someFunc)
-
+import GitCleanBranches (run)
 
 main :: IO ()
-main = someFunc
+main = run
