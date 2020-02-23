@@ -23,6 +23,8 @@ library
   hs-source-dirs:      src
   exposed-modules:     GitCleanBranches
                         GitCleanBranches.Cli
+                        GitCleanBranches.Git
+                          GitCleanBranches.Git.Branch
                         GitCleanBranches.Core
 
   autogen-modules:     Paths_git_clean_branches

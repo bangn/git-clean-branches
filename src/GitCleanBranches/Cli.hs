@@ -3,16 +3,15 @@ module GitCleanBranches.Cli (
 ) where
 
 import Data.Version (showVersion)
-import GitCleanBranches.Core (clean)
-import Options.Applicative (CommandFields, Mod, Parser, ParserInfo, auto,
-                            execParser, flag, fullDesc, help, helper, info,
-                            infoOption, long, metavar, option, progDesc, short,
-                            showDefault, switch, value)
+import GitCleanBranches.Core (cleanBranches)
+import Options.Applicative (Parser, ParserInfo, execParser, fullDesc, help,
+                            helper, info, infoOption, long, progDesc, short,
+                            switch)
 import Paths_git_clean_branches as Meta (version)
 
 runCleanBranches :: IO ()
 runCleanBranches = execParser cliParser >>= \case
-  CliOptions fetchUpstream -> clean
+  CliOptions fetchUpstream -> cleanBranches fetchUpstream
 
 cliParser :: ParserInfo CliOptions
 cliParser = info
