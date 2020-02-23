@@ -13,10 +13,13 @@ cleanBranches fetchUpstream = do
   putStrLn $ unlines bs
   if fetchUpstream
   then do
-     putStrLn "Fetching upstream branches"
-     "git" ["fetch", "--prune"]
-     gbs <- goneBranches
-     forM_ gbs deleteBranch
-  else do
-     gbs <- goneBranches
-     forM_ gbs deleteBranch
+    putStrLn "Fetching upstream branches"
+    "git" ["fetch", "--prune"]
+    runClean
+  else
+    runClean
+  where
+    runClean :: IO ()
+    runClean = do
+      gbs <- goneBranches
+      forM_ gbs deleteBranch

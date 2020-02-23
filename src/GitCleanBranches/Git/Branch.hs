@@ -7,19 +7,20 @@ import qualified Data.Text as T
 import Shellmet ()
 import System.Process
 
-deleteBranch :: T.Text -> IO ()
-deleteBranch branch = do
-  putStrLn $ "Deleting branch" <> T.unpack branch
+deleteBranch :: Maybe T.Text -> IO ()
+deleteBranch Nothing = return ()
+deleteBranch (Just branch) = do
+  putStrLn $ "Deleting branch: " <> T.unpack branch
   "git" ["branch", "-D", branch]
 
-goneBranches :: IO [T.Text]
+goneBranches :: IO [Maybe T.Text]
 goneBranches =
   let gone :: T.Text
       gone = "[gone]"
   in
     do
       branches <- allBranches
-      return (filter (T.isSuffixOf gone) $ T.pack <$> branches)
+      return $ fmap (T.stripSuffix gone) (filter (T.isSuffixOf gone) $ T.pack <$> branches)
 
 allBranches :: IO [String]
 allBranches = do
