@@ -8,16 +8,17 @@ import Shellmet ()
 
 cleanBranches :: Bool -> IO ()
 cleanBranches fetchUpstream = do
+  putStrLn "Cleaning gone branches ..."
   bs <- allBranches
   putStrLn "All branches: "
   putStrLn $ unlines bs
   if fetchUpstream
-  then do
-    putStrLn "Fetching upstream branches"
-    "git" ["fetch", "--prune"]
-    runClean
-  else
-    runClean
+    then do
+      putStrLn "Fetching upstream branches"
+      "git" ["fetch", "--prune"]
+      runClean
+    else
+      runClean
   where
     runClean :: IO ()
     runClean = do
