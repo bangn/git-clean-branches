@@ -8,10 +8,8 @@ import Shellmet ()
 import System.Process
 
 deleteBranch :: Maybe T.Text -> IO ()
-deleteBranch Nothing = return ()
-deleteBranch (Just branch) = do
-  putStrLn $ "Deleting branch: " <> T.unpack branch
-  "git" ["branch", "-D", branch]
+deleteBranch Nothing       = return ()
+deleteBranch (Just branch) = "git" ["branch", "-D", branch]
 
 goneBranches :: IO [Maybe T.Text]
 goneBranches =
