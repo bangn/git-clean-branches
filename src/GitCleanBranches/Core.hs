@@ -3,15 +3,13 @@ module GitCleanBranches.Core (
 ) where
 
 import Control.Monad (forM_)
-import GitCleanBranches.Git (allBranches, deleteBranch, goneBranches)
+import Data.Maybe (fromMaybe)
+import qualified Data.Text as T
+import GitCleanBranches.Git (deleteBranch, goneBranches)
 import Shellmet ()
 
 cleanBranches :: Bool -> IO ()
-cleanBranches fetchUpstream = do
-  putStrLn "Cleaning gone branches ..."
-  bs <- allBranches
-  putStrLn "All branches: "
-  putStrLn $ unlines bs
+cleanBranches fetchUpstream =
   if fetchUpstream
     then do
       putStrLn "Fetching upstream branches"
@@ -23,4 +21,10 @@ cleanBranches fetchUpstream = do
     runClean :: IO ()
     runClean = do
       gbs <- goneBranches
-      forM_ gbs deleteBranch
+      case gbs of
+        [] -> putStrLn "Nothing to be deleted"
+        _  -> do
+          putStrLn "Branches to be deleted"
+          putStrLn . unwords $ branchesToBeDeleted
+          forM_ gbs deleteBranch
+            where branchesToBeDeleted = T.unpack . fromMaybe "" <$> gbs
