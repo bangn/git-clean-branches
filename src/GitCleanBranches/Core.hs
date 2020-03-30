@@ -25,6 +25,6 @@ cleanBranches fetchUpstream =
         [] -> putStrLn "Nothing to be deleted"
         _  -> do
           putStrLn "Branches to be deleted"
-          putStrLn . unwords $ branchesToBeDeleted
+          putStrLn . unlines $ branchesToBeDeleted
           forM_ gbs deleteBranch
             where branchesToBeDeleted = T.unpack . fromMaybe "" <$> gbs
