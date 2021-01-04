@@ -78,12 +78,12 @@ jobs:
           cabal install exe:git-clean-branches --install-method=copy --overwrite-policy=always --installdir=dist
 
       - name: Set binary path name
-        run: echo "::set-env name=BINARY_PATH::./dist/git-clean-branches${{ env.EXT }}"
+        run: echo "BINARY_PATH=./dist/git-clean-branches${{ env.EXT }}" >> $GITHUB_ENV
 
       - name: Compress binary
         uses: svenstaro/upx-action@2.0.1
         with:
-          file: ${{ env.BINARY_PATH }}
+          file: $BINARY_PATH
 
       - name: Load Release URL File from release job
         uses: actions/download-artifact@v1
@@ -102,6 +102,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release_info.outputs.upload_url }}
-          asset_path: ${{ env.BINARY_PATH }}
+          asset_path: $BINARY_PATH
           asset_name: git-clean-branches${{ steps.tag.outputs.tag }}-${{ runner.os }}-ghc-${{ matrix.ghc }}${{ env.EXT }}
           asset_content_type: application/octet-stream
