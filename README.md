@@ -2,6 +2,12 @@
 
 Clean up local branches deleted on a remote
 
+## Build project
+
+```bash
+cabal new-build
+```
+
 ## Usage
 
 Copy the executable file to your `PATH`
