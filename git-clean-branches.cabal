@@ -30,7 +30,7 @@ library
   autogen-modules:     Paths_git_clean_branches
   other-modules:       Paths_git_clean_branches
 
-  build-depends:       base ^>= 4.12.0.0
+  build-depends:       base ^>= 4.14.3.0
                      , optparse-applicative ^>= 0.15
                      , process ^>= 1.6.5.0
                      , shellmet ^>= 0.0.3.0
@@ -67,7 +67,7 @@ executable git-clean-branches
   hs-source-dirs:      app
   main-is:             Main.hs
 
-  build-depends:       base ^>= 4.12.0.0
+  build-depends:       base ^>= 4.14.3.0
                      , git-clean-branches
 
 
